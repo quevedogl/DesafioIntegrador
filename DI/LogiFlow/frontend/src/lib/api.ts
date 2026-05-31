@@ -1,6 +1,7 @@
 import { Cliente, ClienteFormData } from "@/types/cliente";
 import { Produto, ProdutoFormData } from "@/types/produto";
 import { Pedido, PedidoPayload } from "@/types/pedido";
+import { DashboardData } from "@/types/dashboard";
 
 const BASE = "http://localhost:3001";
 
@@ -44,5 +45,8 @@ export const api = {
       request<Pedido>(`/pedidos/${id}`, { method: "PUT", body: JSON.stringify(data) }),
     remove: (id: string) =>
       request<void>(`/pedidos/${id}`, { method: "DELETE" }),
+  },
+  dashboard: {
+    get: () => request<DashboardData>("/dashboard"),
   },
 };

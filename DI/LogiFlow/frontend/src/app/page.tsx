@@ -39,6 +39,12 @@ export default function Home() {
             description="Crie pedidos vinculando clientes e produtos, acompanhe o status."
             icon="🛒"
           />
+          <ModuleCard
+            href="/dashboard"
+            title="Dashboard"
+            description="Visualize gráficos de vendas, top clientes, produtos e distribuição geográfica."
+            icon="📊"
+          />
         </div>
       </main>
     </div>

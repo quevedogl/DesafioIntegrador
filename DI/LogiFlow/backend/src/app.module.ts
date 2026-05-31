@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { ClientesModule } from './clientes/clientes.module';
 import { ProdutosModule } from './produtos/produtos.module';
 import { PedidosModule } from './pedidos/pedidos.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { PedidosModule } from './pedidos/pedidos.module';
     ClientesModule,
     ProdutosModule,
     PedidosModule,
+    DashboardModule,
   ],
   controllers: [AppController],
   providers: [AppService],
