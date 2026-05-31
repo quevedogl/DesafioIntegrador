@@ -147,7 +147,7 @@ export default function PedidosPage() {
 
   /* ── remover ── */
   async function handleRemover(id: string) {
-    if (!confirm("Deseja cancelar/remover este pedido?")) return;
+    if (!confirm("Deseja remover este pedido? O estoque dos produtos será restaurado.")) return;
     try {
       await api.pedidos.remove(id);
       mostrarFeedback("sucesso", "Pedido removido.");
@@ -373,22 +373,30 @@ export default function PedidosPage() {
                       </div>
 
                       <div className="flex flex-col items-end gap-2">
-                        <select
-                          value={p.status}
-                          onChange={(e) => handleStatus(p.id, e.target.value)}
-                          className={`text-xs font-medium px-3 py-1.5 rounded-full border-0 outline-none cursor-pointer ${STATUS_COLORS[p.status]}`}
-                        >
-                          {STATUS_LIST.map((s) => (
-                            <option key={s} value={s}>{s}</option>
-                          ))}
-                        </select>
+                        {p.status === "Entregue" || p.status === "Cancelado" ? (
+                          <span className={`text-xs font-medium px-3 py-1.5 rounded-full ${STATUS_COLORS[p.status]}`}>
+                            {p.status}
+                          </span>
+                        ) : (
+                          <select
+                            value={p.status}
+                            onChange={(e) => handleStatus(p.id, e.target.value)}
+                            className={`text-xs font-medium px-3 py-1.5 rounded-full border-0 outline-none cursor-pointer ${STATUS_COLORS[p.status]}`}
+                          >
+                            {STATUS_LIST.filter((s) => s !== "Entregue" || p.status === "Enviado").map((s) => (
+                              <option key={s} value={s}>{s}</option>
+                            ))}
+                          </select>
+                        )}
 
-                        <button
-                          onClick={() => handleRemover(p.id)}
-                          className="text-red-400 hover:text-red-600 text-xs font-medium transition-colors"
-                        >
-                          Remover
-                        </button>
+                        {p.status !== "Entregue" && (
+                          <button
+                            onClick={() => handleRemover(p.id)}
+                            className="text-red-400 hover:text-red-600 text-xs font-medium transition-colors"
+                          >
+                            Remover
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
