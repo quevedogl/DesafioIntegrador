@@ -3,6 +3,7 @@ import { Produto, ProdutoFormData } from "@/types/produto";
 import { Pedido, PedidoPayload } from "@/types/pedido";
 import { DashboardData } from "@/types/dashboard";
 import type { ChurnCliente, ChurnResumo } from "@/types/estrategia";
+import type { RelatorioVendas, RelatorioEstoque } from "@/types/relatorios";
 
 const BASE = "http://localhost:3001";
 const ML = "http://localhost:8000";
@@ -62,6 +63,10 @@ export const api = {
   },
   dashboard: {
     get: () => request<DashboardData>("/dashboard"),
+  },
+  relatorios: {
+    vendas: () => request<RelatorioVendas>("/relatorios/vendas"),
+    estoque: () => request<RelatorioEstoque>("/relatorios/estoque"),
   },
   estrategia: {
     resumo: () => mlRequest<ChurnResumo>("/ml/churn/resumo"),

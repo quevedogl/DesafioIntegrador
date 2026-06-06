@@ -51,6 +51,12 @@ export default function Home() {
             description="Classificação de clientes por risco de churn e propensão à compra via Random Forest."
             icon="🧠"
           />
+          <ModuleCard
+            href="/relatorios"
+            title="Relatórios"
+            description="Relatórios gerenciais de vendas e estoque, além de relatórios estratégicos de retenção e expansão."
+            icon="📋"
+          />
         </div>
       </main>
     </div>
