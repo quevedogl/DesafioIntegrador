@@ -45,6 +45,12 @@ export default function Home() {
             description="Visualize gráficos de vendas, top clientes, produtos e distribuição geográfica."
             icon="📊"
           />
+          <ModuleCard
+            href="/estrategia"
+            title="Decisão Estratégica"
+            description="Classificação de clientes por risco de churn e propensão à compra via Random Forest."
+            icon="🧠"
+          />
         </div>
       </main>
     </div>
