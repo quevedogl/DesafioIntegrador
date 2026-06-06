@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers import health
+from app.routers import churn
 
-app = FastAPI(title="Desafio Integrador API", version="1.0.0")
+app = FastAPI(title="LogiFlow ML Service", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -13,8 +14,9 @@ app.add_middleware(
 )
 
 app.include_router(health.router)
+app.include_router(churn.router)
 
 
 @app.get("/")
 def root():
-    return {"message": "Python service running"}
+    return {"message": "LogiFlow ML Service running"}
