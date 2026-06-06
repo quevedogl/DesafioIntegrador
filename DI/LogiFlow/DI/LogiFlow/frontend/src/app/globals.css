@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  --lf-orange: #f97316;
+  --lf-orange-dark: #ea6c08;
+  --lf-gray-900: #1a1a1a;
+  --lf-gray-700: #374151;
+  --lf-gray-400: #9ca3af;
+  --lf-gray-100: #f3f4f6;
+  --lf-white: #ffffff;
+}
+
+body {
+  background: var(--lf-gray-100);
+  color: var(--lf-gray-900);
+  font-family: Arial, Helvetica, sans-serif;
+}

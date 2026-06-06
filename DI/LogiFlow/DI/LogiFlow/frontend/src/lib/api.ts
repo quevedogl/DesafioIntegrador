@@ -2,22 +2,8 @@ import { Cliente, ClienteFormData } from "@/types/cliente";
 import { Produto, ProdutoFormData } from "@/types/produto";
 import { Pedido, PedidoPayload } from "@/types/pedido";
 import { DashboardData } from "@/types/dashboard";
-import type { ChurnCliente, ChurnResumo } from "@/types/estrategia";
 
 const BASE = "http://localhost:3001";
-const ML = "http://localhost:8000";
-
-async function mlRequest<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(`${ML}${path}`, {
-    headers: { "Content-Type": "application/json" },
-    ...init,
-  });
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new Error(body?.detail ?? `Erro ${res.status}`);
-  }
-  return res.json();
-}
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
@@ -62,10 +48,5 @@ export const api = {
   },
   dashboard: {
     get: () => request<DashboardData>("/dashboard"),
-  },
-  estrategia: {
-    resumo: () => mlRequest<ChurnResumo>("/ml/churn/resumo"),
-    clientes: () => mlRequest<ChurnCliente[]>("/ml/churn/clientes"),
-    treinar: () => mlRequest<{ status: string; metricas: Record<string, unknown> }>("/ml/treinar", { method: "POST" }),
   },
 };
